@@ -1,5 +1,5 @@
 
-'''python
+'''bash
 
 #!/usr/bin/bash
 echo "-------------------------"
