@@ -1,5 +1,6 @@
 
 '''bash
+
 #!/usr/bin/bash
 echo "-------------------------"
 echo "| Ubuntu 22.04 Script |"
