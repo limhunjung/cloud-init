@@ -29,10 +29,16 @@ PasswordAuthentication yes #L61
 Banner /root/.ssh/first-loing.msg 
 """
 
+service restart sshd
+
 # welecome 메시지 
+
+mv /root/cloud-init/alpine30kadap-welecome.msg /etc/motd
+
+
 mv /root/cloud-init/alpine30/*.msg /root/.ssh/
 
-echo "if [ -f /root/.ssh/first-login.msg ]; then rm -f /root/.ssh/first-login.msg; else cat /home/ubuntu/.ssh/kadap-welecome.msg; fi" | tee -a /etc/profile
+echo "if [ -f /root/.ssh/first-login.msg ]; then rm -f /root/.ssh/first-login.msg; fi" | tee -a /etc/profile
 
 #chmod -R 755 /home/ubuntu/
 
