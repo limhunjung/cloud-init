@@ -30,7 +30,7 @@ Banner /root/.ssh/first-loing.msg
 """
 
 # welecome 메시지 
-mv /root/cloud-init/ubuntu22/*.msg /root/.ssh/
+mv /root/cloud-init/alpine30/*.msg /root/.ssh/
 
 echo "if [ -f /root/.ssh/first-login.msg ]; then rm -f /root/.ssh/first-login.msg; else cat /home/ubuntu/.ssh/kadap-welecome.msg; fi" | tee -a /etc/profile
 
@@ -57,18 +57,18 @@ sudo docker run -d --name cockpit-ws -p 9090:9090 cockpit/ws
 
 
 # 시간 설정 
-$ setup-simezone #Asian - Seoul
+$ setup-timezone #Asian - Seoul
 
 #마무리 
-apt install -y acpid cloud-init cloud-initramfs-growroot
+apk add acpid cloud-init cloud-initramfs-growroot
 
-# https://sarc.io/index.php/cloud/2353-gcp-gcp-ubuntu-vm-apt-repo
-echo "apt_preserve_sources_list: true" | tee -a /etc/cloud/cloud.cfg
 
-rm /etc/netplan/50-cloud-init.yaml
-rm -rf /home/ubuntu/cloud-init
+# ? rm /etc/netplan/50-cloud-init.yaml
+rm -rf /root/cloud-init
 cloud-init clean
-apt autoclean
+#apt autoclean
+apk cache clean
+
 
 passwd root
 
@@ -76,7 +76,7 @@ cat <<'EOF'
 
 su - 
 passwd --expire root 
-history -cw  
+rm ~/.ash_history #history -cw  
 
 $ poweroff
 
