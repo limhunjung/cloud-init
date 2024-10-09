@@ -4,39 +4,41 @@ echo "| Alpine 30 Script |"
 echo "-------------------------"
 echo ""
 
+# apk repossitory 수정 
+vi /etc/apk/repositories #copmmunity 주석 제거 
+
+# 필수 패키지 설치 
+apk update
+apk add git docker docker-compose
+
+# docker 설정
+rc-update add docker boot
+service docker start
+docker version
+
 # 파일 다운로드 
 git clone https://github.com/limhunjung/cloud-init.git
 
 # ssh 설정
-cd /root/cloud-init/ubuntu22/
-chmod 644 /root/cloud-init/ubuntu22/sshd_config
-chown root sshd_config && chgrp root sshd_config
-mv /root/cloud-init/ubuntu22/sshd_config /etc/ssh/sshd_config
+echo "Banner /root/.ssh/first-loing.msg" | tee -a /etc/ssh/sshd_config
 
-# repo 설정 
-chmod 644 /root/cloud-init/ubuntu22/sources.list
-chown root sources.list && chgrp root sources.list
-mv /root/cloud-init/ubuntu22/sources.list /etc/apt/sources.list
+vi /etc/ssh/sshd_config
 """
-#/media/cdrom/apks
-http://dl-cdn.alpinelinux.org/alpine/v3.17/main
-http://dl-cdn.alpinelinux.org/alpine/v3.17/community
-#http://dl-cdn.alpinelinux.org/alpine/edge/main
-http://dl-cdn.alpinelinux.org/alpine/edge/community
-http://dl-cdn.alpinelinux.org/alpine/edge/testing
+PermitRootLogin yes #L36
+PasswordAuthentication yes #L61
+Banner /root/.ssh/first-loing.msg 
 """
-
 
 # welecome 메시지 
 mv /root/cloud-init/ubuntu22/*.msg /root/.ssh/
 
 echo "if [ -f /root/.ssh/first-login.msg ]; then rm -f /root/.ssh/first-login.msg; else cat /home/ubuntu/.ssh/kadap-welecome.msg; fi" | tee -a /etc/profile
 
-chmod -R 755 /home/ubuntu/
+#chmod -R 755 /home/ubuntu/
 
 # telegraf
 tar zxvf /root/cloud-init/ubuntu22/telegraf.tgz -C /etc
-apt update; sudo apt install jq -y
+apk jq -y
 
 vi /etc/telegraf/template/template/telegraf.conf.template  #interval = "60s" 로 조정
 
@@ -46,11 +48,13 @@ systemctl enable --now telegraf
 echo "(nohup /etc/telegraf/template/reset_metric_agent_conf.sh > /dev/null 2>&1 &) #telegraf config script" | tee -a /etc/profile
 systemctl status telegraf
 
+rc-update add telegraf boot
+service telegraf start
+
+
 # cockpit 설치 
-msg="Cockpit";
-. /etc/os-release
-apt install -y cockpit
-# banner /etc/issue.d
+sudo docker run -d --name cockpit-ws -p 9090:9090 cockpit/ws
+
 
 # 시간 설정 
 $ setup-simezone #Asian - Seoul
