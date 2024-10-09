@@ -20,25 +20,29 @@ docker version
 git clone https://github.com/limhunjung/cloud-init.git
 
 # ssh 설정
-echo "Banner /root/.ssh/first-loing.msg" | tee -a /etc/ssh/sshd_config
+echo "Banner /root/.ssh/first.msg" | tee -a /etc/ssh/sshd_config
 
 vi /etc/ssh/sshd_config
 """
 PermitRootLogin yes #L36
 PasswordAuthentication yes #L61
-Banner /root/.ssh/first-loing.msg 
+Banner /root/.ssh/first.msg 
 """
 
-service restart sshd
+mv /root/cloud-init/alpine30/first-login.msg /root/.ssh/first.msg
+
+service sshd restart 
 
 # welecome 메시지 
 
-mv /root/cloud-init/alpine30kadap-welecome.msg /etc/motd
+mv /root/cloud-init/alpine30/kadap-welecome.msg /etc/motd
+"""
+1. You can setup the system with the command: setup-alpine
+2. Preinstalled SW : docker ce 26.1.5
 
 
-mv /root/cloud-init/alpine30/*.msg /root/.ssh/
 
-echo "if [ -f /root/.ssh/first-login.msg ]; then rm -f /root/.ssh/first-login.msg; fi" | tee -a /etc/profile
+echo "if [ -f /root/.ssh/first.msg ]; then rm -f /root/.ssh/first.msg; fi" | tee -a /etc/profile
 
 #chmod -R 755 /home/ubuntu/
 
@@ -86,7 +90,7 @@ cat <<'EOF'
 
 su - 
 passwd --expire root 
-rm ~/.ash_history #history -cw  
+rm ~/.ash_history 
 
 $ poweroff
 
