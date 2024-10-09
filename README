@@ -21,6 +21,8 @@ openstack volume list
 (kolla-ansible-zed) root@deploy:~# openstack image create --volume 5b8fdfbc-2710-428b-981e-bf031f850ed8 --os-volume-api-version 3.1 --public  minikube-agent01-20240822
 
 
+# watch openstack image list
+
 #(선택) 4.5 이미지 이름 변경
 
 #openstack image set --name new-image-name old-image-name
