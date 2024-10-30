@@ -67,6 +67,7 @@ sudo apt autoclean
 
 # 재부팅 (kadpa 키파일 로그인)
 touch /home/kadap/.Xauthority 
+sudo userdel ubuntu
 sudo rm -rf /home/ubuntu
 
 echo "sudo cp /etc/issue /etc/issue.net" | sudo tee -a /home/kadap/.bashrc
