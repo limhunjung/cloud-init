@@ -4,5 +4,4 @@
  Login ID : kadap
  Current Password : kadap1234
 
- You are required to change your PASSWORD immediately
-
+ !!! please chagne the password for security (command : $ passwd )
