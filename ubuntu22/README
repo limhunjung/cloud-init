@@ -78,11 +78,13 @@ sudo cloud-init clean
 
 history -cw  
 
-
-#!/bin/bash
-passwd="kadap$(RANDOM % 998)"
-echo "$passwd" >> /home/kadap/.passwd
-yes $passwd | sudo passwd kadap
+runcmd:
+  - |
+    #!/bin/bash
+    passwd="kadap$(printf "%04d" $((RANDOM % 10000)))"
+    echo "$passwd" > /home/kadap/.passwd
+    echo "                                  ##### PASSWORD : $passwd ##### "
+    yes $passwd | sudo passwd kadap
 #--------------------------------------------------------------------------------------------------
 
 #!/usr/bin/bash
