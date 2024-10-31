@@ -81,10 +81,12 @@ history -cw
 runcmd:
   - |
     #!/bin/bash
-    passwd="kadap$((RANDOM % 10000))"
+    passwd="kadap$(date +%M%S)"
     echo "$passwd" > /home/kadap/.passwd
     echo "                                  ##### PASSWORD : $passwd ##### "
     yes $passwd | sudo passwd kadap
+    sed -i "s/LTS/${passwd}/" /etc/issue.net
+
 #--------------------------------------------------------------------------------------------------
 
 #!/usr/bin/bash
