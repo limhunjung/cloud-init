@@ -79,7 +79,7 @@ sudo cloud-init clean
 history -cw  
 
 
-
+yes kadap1234 | passwd kadap
 #--------------------------------------------------------------------------------------------------
 
 #!/usr/bin/bash
