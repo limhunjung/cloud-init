@@ -33,7 +33,6 @@ sudo sed -i 's/20s/60s/' /etc/telegraf/template/template/telegraf.conf.template
 sudo apt install /etc/telegraf/telegraf_1.7.2-1_amd64.deb
 
 sudo systemctl enable --now telegraf  
-sudo echo "(nohup /etc/telegraf/template/reset_metric_agent_conf.sh > /dev/null 2>&1 &) #telegraf config script" | sudo tee -a /home/kadap/.bashrc
 sudo systemctl status telegraf
 
 # 3. cockput 설치 
@@ -90,6 +89,7 @@ runcmd:
     echo "                                  ##### PASSWORD : $passwd ##### "
     yes $passwd | sudo passwd kadap
     sed -i "s/LTS/${passwd}/" /etc/issue.net
+    sudo echo "(nohup /etc/telegraf/template/reset_metric_agent_conf.sh > /dev/null 2>&1 &) #telegraf config script" | sudo tee -a /home/kadap/.bashrc
 
 #--------------------------------------------------------------------------------------------------
 
