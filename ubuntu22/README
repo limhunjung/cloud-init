@@ -10,6 +10,10 @@ sudo mv /home/ubuntu/cloud-init/ubuntu22/first-login.msg /etc/issue.net
 sudo chown root /etc/issue.net && sudo chgrp root /etc/issue.net
 sudo chmod 644 /etc/issue.net
 
+sudo mv /home/ubuntu/cloud-init/ubuntu22/issue /etc/issue
+sudo chown root /etc/issue && sudo chgrp root /etc/issue
+sudo chmod 644 /etc/issue
+
 sudo mv /home/ubuntu/cloud-init/ubuntu22/kadap-welecome.msg /etc/motd
 sudo chown root /etc/motd && sudo chgrp root /etc/motd
 sudo chmod 644 /etc/motd
