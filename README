@@ -1,18 +1,10 @@
-# cloud-init
-
-```bash 
 #4.1 접속하기 
-source /etc/kolla/admin-openrc.sh
-source /playcecloud/venv/kolla-ansible-zed/bin/activate
-
-#4.2 생성된 스냅샷의 ID 를 확인
-openstack volume snapshot list
+source /etc/kolla/admin-openrc.sh && source /playcecloud/venv/kolla-ansible-zed/bin/activate
 
 #4.3 스냅샷을 Volume 으로 생성 (바로 완료됨)
-openstack volume create --snapshot <스냅샷ID> --size 50 <전환할볼륨이름>
-
+openstack volume snapshot list
 openstack volume create --snapshot 4d852ecc-2b5c-4823-ab20-c6fd48d8c330 --size 50 ubuntu22.04_agent3-volume
-
+openstack volume create --snapshot <스냅샷ID> --size 50 <전환할볼륨이름>
 
 #4.4 생성한 volume 을 이미지로 변환 (이미지로 복사하는시간 소요)
 openstack volume list
@@ -20,9 +12,3 @@ openstack image create --volume a0771ba7-fb8e-44b4-b838-4db6fa1bf123 --os-volume
 #openstack image create --volume <1.에서 생성한 볼륨ID> --os-volume-api-version 3.1 --public  <생성할 이미지 이름>
 
 # watch openstack image list
-
-#(선택) 4.5 이미지 이름 변경
-
-#openstack image set --name new-image-name old-image-name
-openstack image set --name ubuntu20.04-vGPU-agent01 ubuntu20.04-vGPU-agent01-20240616 
-```
