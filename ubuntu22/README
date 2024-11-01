@@ -50,9 +50,18 @@ sudo sed -i 's/gecos: Ubuntu/gecos: KADaP default user/' /etc/cloud/cloud.cfg
 
 sudo vi /etc/cloud/cloud.cfg
 """
+bootrun:
+ - sudo echo "(nohup /etc/telegraf/template/reset_metric_agent_conf.sh > /dev/null 2>&1 &) #telegraf config script" | sudo tee -a /home/kadap/.bashrc
 
-
-
+runcmd:
+  - |
+    #!/bin/bash
+    passwd="kadap$(date +%M%S)"
+    echo "$passwd" > /home/kadap/.passwd
+    echo "                                  ##### PASSWORD : $passwd ##### "
+    yes $passwd | sudo passwd kadap
+    sed -i "s/LTS/${passwd}/" /etc/issue.net
+ 
 apt:
   primary:
     - arches: [default]
@@ -81,15 +90,6 @@ sudo cloud-init clean
 
 history -cw  
 
-runcmd:
-  - |
-    #!/bin/bash
-    passwd="kadap$(date +%M%S)"
-    echo "$passwd" > /home/kadap/.passwd
-    echo "                                  ##### PASSWORD : $passwd ##### "
-    yes $passwd | sudo passwd kadap
-    sed -i "s/LTS/${passwd}/" /etc/issue.net
-    sudo echo "(nohup /etc/telegraf/template/reset_metric_agent_conf.sh > /dev/null 2>&1 &) #telegraf config script" | sudo tee -a /home/kadap/.bashrc
 
 #--------------------------------------------------------------------------------------------------
 
