@@ -57,10 +57,10 @@ runcmd:
   - |
     #!/bin/bash
     passwd="kadap$(date +%M%S)"
-    echo "$passwd" > /home/kadap/.passwd
+    echo "`date +%y-%m-%d` : $passwd" > /home/kadap/.passwd
     echo "                                  ##### PASSWORD : $passwd ##### "
     yes $passwd | sudo passwd kadap
-    sed -i "s/LTS/${passwd}/" /etc/issue.net
+    sed -i "s/kadap1234/${passwd}/" /etc/issue.net
  
 apt:
   primary:
