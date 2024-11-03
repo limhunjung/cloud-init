@@ -69,7 +69,7 @@ runcmd:
   - |
     #!/bin/bash
     passwd="kadap$(date +%M%S)"
-    echo "`date +%y-%m-%d` : $passwd" > /home/kadap/.passwd
+    echo "$(stat -c %W /etc/shadow) `date +%y-%m-%d` : $passwd" > /home/kadap/.passwd
     echo "                                  ##### PASSWORD : $passwd ##### "
     yes $passwd | sudo passwd kadap
     sed -i "s/kadap1234/${passwd}/" /etc/issue.net
