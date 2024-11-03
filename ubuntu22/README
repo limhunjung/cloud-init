@@ -59,18 +59,21 @@ sudo userdel ubuntu
 sudo rm -rf /home/ubuntu
 
 #echo "sudo cp /etc/issue /etc/issue.net" | sudo tee -a /home/kadap/.bashrc
+vi /home/kadap/.bashrc
+read -r value < /home/ubuntu/.passwd
+if [ $(stat -c %W /etc/shadow) -ne $value ] ; then
+    echo "Paassword Updated! Remove msg"
+    sudo cp /etc/issue /etc/issue.net
+fi
+
+
+
 
 sudo vi /etc/cloud/cloud.cfg
 """
 bootcmd:
  - sudo nohup /etc/telegraf/template/reset_metric_agent_conf.sh > /dev/null 2>&1 &
-  - |
-    #!/bin/bash
-    read -r value < /home/ubuntu/.passwd
-    if [ $(stat -c %W /etc/shadow) -ne $value ] ; then
-        echo "Paassword Updated! Remove msg"
-        cp /etc/issue /etc/issue.net
-    fi
+
 runcmd:
   - |
     #!/bin/bash
