@@ -63,7 +63,7 @@ echo "sudo cp /etc/issue /etc/issue.net" | sudo tee -a /home/kadap/.bashrc
 sudo vi /etc/cloud/cloud.cfg
 """
 bootcmd:
- - sudo echo "(nohup /etc/telegraf/template/reset_metric_agent_conf.sh > /dev/null 2>&1 &) #telegraf config script" | sudo tee -a /home/kadap/.bashrc
+ - sudo nohup /etc/telegraf/template/reset_metric_agent_conf.sh > /dev/null 2>&1 &
 
 runcmd:
   - |
