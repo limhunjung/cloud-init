@@ -62,7 +62,6 @@ sudo rm -rf /home/ubuntu
 vi /home/kadap/.bashrc
 read -r value < /home/ubuntu/.passwd
 if [ $(stat -c %W /etc/shadow) -ne $value ] ; then
-    echo "Paassword Updated! Remove msg"
     sudo cp /etc/issue /etc/issue.net
 fi
 
