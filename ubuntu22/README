@@ -14,6 +14,10 @@ sudo mv /home/ubuntu/cloud-init/ubuntu22/issue /etc/issue
 sudo chown root /etc/issue && sudo chgrp root /etc/issue
 sudo chmod 644 /etc/issue
 
+sudo mv /home/ubuntu/cloud-init/ubuntu22/issue.sh /etc/issue.sh
+sudo chown root /etc/issue.sh && sudo chgrp root /etc/issue.sh
+sudo chmod 644 /etc/issue && sudo chmod +x /etc/issue
+
 sudo mv /home/ubuntu/cloud-init/ubuntu22/kadap-welecome.msg /etc/motd
 sudo chown root /etc/motd && sudo chgrp root /etc/motd
 sudo chmod 644 /etc/motd
@@ -57,14 +61,6 @@ sudo apt autoclean
 touch /home/kadap/.Xauthority 
 sudo userdel ubuntu
 sudo rm -rf /home/ubuntu
-
-#echo "sudo cp /etc/issue /etc/issue.net" | sudo tee -a /home/kadap/.bashrc
-vi /home/kadap/.bashrc
-read -r value < /home/ubuntu/.passwd
-if [ $(stat -c %W /etc/shadow) -ne $value ] ; then
-    sudo cp /etc/issue /etc/issue.net
-fi
-
 
 
 
