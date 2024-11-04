@@ -67,7 +67,7 @@ sudo rm -rf /home/ubuntu
 sudo vi /etc/cloud/cloud.cfg
 """
 bootcmd:
- - sudo nohup /etc/telegraf/template/reset_metric_agent_conf.sh > /dev/null 2>&1 &
+ - nohup /etc/telegraf/template/reset_metric_agent_conf.sh > /dev/null 2>&1 &
 
 runcmd:
   - |
