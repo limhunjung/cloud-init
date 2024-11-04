@@ -1,8 +1,8 @@
 #ubuntu 20.04 
 #apt install --no-install-recommends lxde -y
-apt install --no-install-recommends ubuntu-desktop
+sudo apt update && sudo apt install --no-install-recommends ubuntu-desktop mesa-utils -y
 
-sudo apt install -y mesa-utils #GPU
+
 
 
 #디스플레이 메니져 변경 (ubuntu 18이상은 gdm3 only)
