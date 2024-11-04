@@ -80,7 +80,7 @@ timezone: Asia/Seoul
 """
 
 crontab -e 
-*/10 * * * * /etc/issue.sh
+@reboot /etc/issue.sh
 
 
 
