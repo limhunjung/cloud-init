@@ -89,7 +89,8 @@ timezone: Asia/Seoul
 """
 
 crontab -e 
-****** /etc/issue.sh
+*/10 * * * * /etc/issue.sh
+
 
 
 sudo rm /etc/netplan/50-cloud-init.yaml
