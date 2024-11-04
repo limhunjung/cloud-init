@@ -56,7 +56,7 @@ sudo rm /etc/netplan/50-cloud-init.yaml
 sudo cloud-init clean
 sudo apt autoclean
 
-
+#------------------------------------------------------------------------------
 # 재부팅 (kadpa 키파일 로그인)
 touch /home/kadap/.Xauthority 
 sudo userdel ubuntu
@@ -88,6 +88,8 @@ timezone: Asia/Seoul
 
 """
 
+crontab -e 
+****** /etc/issue.sh
 
 
 sudo rm /etc/netplan/50-cloud-init.yaml
