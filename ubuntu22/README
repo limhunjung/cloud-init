@@ -14,7 +14,7 @@ sudo chown root /etc/issue && sudo chgrp root /etc/issue
 sudo chmod 644 /etc/issue
 
 sudo mv /home/ubuntu/cloud-init/ubuntu22/motd.final /etc/motd
-sudo chown root /etc/motd* && sudo chgrp root /etc/motd
+sudo chown root /etc/motd && sudo chgrp root /etc/motd
 sudo chmod 644 /etc/motd
 sudo rm -f /etc/update-motd.d/10* /etc/update-motd.d/8* /etc/update-motd.d/9* /etc/update-motd.d/50-motd-news
 
