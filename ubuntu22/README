@@ -6,7 +6,7 @@ sudo adduser kadap
 git clone https://github.com/limhunjung/cloud-init.git
 
 
-sudo mv /home/ubuntu/cloud-init/ubuntu22/first-login.msg /etc/issue.net
+sudo mv /home/ubuntu/cloud-init/ubuntu22/motd.first /etc/issue.net
 sudo chown root /etc/issue.net && sudo chgrp root /etc/issue.net
 sudo chmod 644 /etc/issue.net
 
