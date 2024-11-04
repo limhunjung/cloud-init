@@ -6,7 +6,7 @@ sudo adduser kadap
 git clone https://github.com/limhunjung/cloud-init.git
 
 
-sudo mv /home/ubuntu/cloud-init/ubuntu22/motd.first /etc/issue.net
+sudo mv /home/ubuntu/cloud-init/ubuntu22/issue.net.first /etc/issue.net
 sudo chown root /etc/issue.net && sudo chgrp root /etc/issue.net
 sudo chmod 644 /etc/issue.net
 
@@ -18,9 +18,10 @@ sudo mv /home/ubuntu/cloud-init/ubuntu22/issue.sh /etc/issue.sh
 sudo chown root /etc/issue.sh && sudo chgrp root /etc/issue.sh
 sudo chmod 644 /etc/issue.sh && sudo chmod +x /etc/issue.sh
 
-sudo mv /home/ubuntu/cloud-init/ubuntu22/kadap-welecome.msg /etc/motd
-sudo chown root /etc/motd && sudo chgrp root /etc/motd
-sudo chmod 644 /etc/motd
+sudo mv /home/ubuntu/cloud-init/ubuntu22/motd* /etc/
+sudo chown root /etc/motd* && sudo chgrp root /etc/motd*
+sudo chmod 644 /etc/motd*
+sudo mv /etc/motd.first /etc/motd
 
 sudo rm -f /etc/update-motd.d/10* /etc/update-motd.d/8* /etc/update-motd.d/9* /etc/update-motd.d/50-motd-news
 
