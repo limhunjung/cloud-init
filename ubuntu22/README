@@ -68,15 +68,11 @@ sudo vi /etc/cloud/cloud.cfg
 """
 bootcmd:
  - nohup /etc/telegraf/template/reset_metric_agent_conf.sh > /dev/null 2>&1 &
-
-runcmd:
-  - |
-    #!/bin/bash
-    passwd="kadap$(date +%M%S)"
-    echo -e "$(stat -c %W /etc/shadow)\n`date +%y-%m-%d`\n$passwd" > /home/kadap/.passwd
-    echo "                                  ##### PASSWORD : $passwd ##### "
-    yes $passwd | sudo passwd kadap
-    sed -i "s/kadap1234/${passwd}/" /etc/issue.net
+ - |
+   #!/bin/bash
+   inotifywait -m -e open /etc/shadow | while read path action file; do
+       sed -i "s/Please type $passwd to update the default passwd(kadap1234)/ /" /etc/issue.net
+   done
  
 apt:
   primary:
@@ -98,6 +94,17 @@ sudo cloud-init clean
 
 
 history -cw  
+
+
+#-----------------------------------------------------
+runcmd:
+  - |
+    #!/bin/bash
+    passwd="kadap$(date +%M%S)"
+    echo -e "$(stat -c %W /etc/shadow)\n`date +%y-%m-%d`\n$passwd" > /home/kadap/.passwd
+    echo "                                  ##### PASSWORD : $passwd ##### "
+    yes $passwd | sudo passwd kadap
+    sed -i "s/kadap1234/${passwd}/" /etc/issue.net
 
 
 #--------------------------------------------------------------------------------------------------
