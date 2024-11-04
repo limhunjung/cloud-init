@@ -5,11 +5,20 @@ sudo adduser kadap
 
 git clone https://github.com/limhunjung/cloud-init.git
 
+sudo mv /home/ubuntu/cloud-init/ubuntu22/issue.net.first /etc/issue.net
+sudo chown root /etc/issue.net && sudo chgrp root /etc/issue.net
+sudo chmod 644 /etc/issue.net
+
+sudo mv /home/ubuntu/cloud-init/ubuntu22/issue /etc/issue
+sudo chown root /etc/issue && sudo chgrp root /etc/issue
+sudo chmod 644 /etc/issue
 
 sudo mv /home/ubuntu/cloud-init/ubuntu22/motd.final /etc/motd
 sudo chown root /etc/motd* && sudo chgrp root /etc/motd
 sudo chmod 644 /etc/motd
 sudo rm -f /etc/update-motd.d/10* /etc/update-motd.d/8* /etc/update-motd.d/9* /etc/update-motd.d/50-motd-news
+
+echo "Banner /etc/issue.net" | sudo tee -a /etc/ssh/sshd_config 
 sudo sed -i 's/PasswordAuthentication no/PasswordAuthentication yes/' /etc/ssh/sshd_config
 
 sudo service ssh restart 
@@ -64,6 +73,7 @@ sudo rm -rf /home/ubuntu
 sudo rm /etc/netplan/50-cloud-init.yaml
 sudo cloud-init clean
 
+echo "sudo cp /etc/issue /etc/issue.net" | sudo tee -a /home/kadap/.bashrc
 
 history -cw  
 
