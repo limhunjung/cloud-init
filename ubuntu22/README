@@ -63,7 +63,7 @@ sudo userdel ubuntu
 sudo rm -rf /home/ubuntu
 
 
-
+sudo apt-get install inotify-tools 
 sudo vi /etc/cloud/cloud.cfg
 """
 bootcmd:
@@ -71,7 +71,8 @@ bootcmd:
  - |
    #!/bin/bash
    inotifywait -m -e open /etc/shadow | while read path action file; do
-       sed -i "s/Please type $passwd to update the default passwd(kadap1234)/ /" /etc/issue.net
+       sed -i "s/Please type $passwd to update the default passwd(kadap1234)/ /" /etc/motd
+       sudo cp /etc/issue /etc/issue.net
    done
  
 apt:
