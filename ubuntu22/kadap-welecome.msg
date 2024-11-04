@@ -8,3 +8,4 @@
  ██║  ██╗██║  ██║██████╔╝██║  ██║██║     
  ╚═╝  ╚═╝╚═╝  ╚═╝╚═════╝ ╚═╝  ╚═╝╚═╝     
 
+Please type $passwd to update the default passwd(kadap1234)
