@@ -1,4 +1,3 @@
-
  Welecome to Korea Automotive Data Platform 
 
  ██╗  ██╗ █████╗ ██████╗  █████╗ ██████╗ 
