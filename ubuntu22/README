@@ -64,6 +64,8 @@ sudo rm /etc/netplan/50-cloud-init.yaml
 sudo cloud-init clean
 sudo apt autoclean
 
+sudo reboot
+
 #------------------------------------------------------------------------------
 # 재부팅 (kadpa 키파일 로그인)
 touch /home/kadap/.Xauthority 
@@ -73,11 +75,13 @@ sudo rm -rf /home/ubuntu
 sudo rm /etc/netplan/50-cloud-init.yaml
 sudo cloud-init clean
 
+### GPU, DCV등 추가 작업 하기 
+
 echo "sudo cp /etc/issue /etc/issue.net" | sudo tee -a /home/kadap/.bashrc
 
 history -cw  
 
-
+sudo poweroff
 
 
 #---------------------------------------------------------------------------------------------------------------------------
