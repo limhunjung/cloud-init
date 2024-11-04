@@ -16,7 +16,7 @@ sudo chmod 644 /etc/issue
 
 sudo mv /home/ubuntu/cloud-init/ubuntu22/issue.sh /etc/issue.sh
 sudo chown root /etc/issue.sh && sudo chgrp root /etc/issue.sh
-sudo chmod 644 /etc/issue && sudo chmod +x /etc/issue
+sudo chmod 644 /etc/issue.sh && sudo chmod +x /etc/issue.sh
 
 sudo mv /home/ubuntu/cloud-init/ubuntu22/kadap-welecome.msg /etc/motd
 sudo chown root /etc/motd && sudo chgrp root /etc/motd
