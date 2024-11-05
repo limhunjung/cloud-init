@@ -1,4 +1,5 @@
  ----- Welecome to Korea Automotive Data Platform -----
 |               Login ID : kadap                       |
-|               Current Password : kadap1234           |
+|               Default Password : kadap1234           |
+|   Update the password using the $passwd command      |
 --------------------------------------------------------
