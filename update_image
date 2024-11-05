@@ -1,0 +1,16 @@
+
+# 추가 작업 
+
+wget https://raw.githubusercontent.com/limhunjung/cloud-init/refs/heads/main/ubuntu22/issue.net.first
+
+sudo mv ./issue.net.first /etc/issue.net
+sudo chown root /etc/issue.net && sudo chgrp root /etc/issue.net
+sudo chmod 644 /etc/issue.net
+
+
+sudo rm /etc/netplan/50-cloud-init.yaml
+sudo cloud-init clean
+
+history -cw  
+
+sudo poweroff
