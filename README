@@ -8,7 +8,7 @@ openstack volume create --snapshot <스냅샷ID> --size 50 <전환할볼륨이�
 
 #4.4 생성한 volume 을 이미지로 변환 (이미지로 복사하는시간 소요)
 openstack volume list
-openstack image create --volume a0771ba7-fb8e-44b4-b838-4db6fa1bf123 --os-volume-api-version 3.1 --public  ubuntu22.04_agent3-img
-#openstack image create --volume <1.에서 생성한 볼륨ID> --os-volume-api-version 3.1 --public  <생성할 이미지 이름>
+openstack image create --progress --volume a0771ba7-fb8e-44b4-b838-4db6fa1bf123 --os-volume-api-version 3.1 --public  ubuntu22.04_agent3-img
+#openstack image create --progress --volume <1.에서 생성한 볼륨ID> --os-volume-api-version 3.1 --public  <생성할 이미지 이름>
 
 # watch openstack image list
