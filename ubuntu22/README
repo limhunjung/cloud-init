@@ -19,6 +19,7 @@ sudo rm -f /etc/update-motd.d/10* /etc/update-motd.d/8* /etc/update-motd.d/9* /e
 
 echo "Banner /etc/issue.net" | sudo tee -a /etc/ssh/sshd_config 
 sudo sed -i 's/PasswordAuthentication no/PasswordAuthentication yes/' /etc/ssh/sshd_config
+sudo sed -i 's/#PasswordAuthentication yes/PasswordAuthentication yes/' /etc/ssh/sshd_config
 
 sudo service ssh restart 
 
