@@ -8,8 +8,8 @@ sudo mv /home/ubuntu/cloud-init/ubuntu22/issue.net.first /etc/issue.net
 sudo chown root /etc/issue.net && sudo chgrp root /etc/issue.net
 sudo chmod 644 /etc/issue.net
 
-sudo mv /home/ubuntu/cloud-init/ubuntu22/repo.sh /etc/apt/repo.sh
-sudo chown root /etc/apt/repo.she && sudo chgrp root /etc/apt/repo.sh
+sudo mv /home/ubuntu/cloud-init/ubuntu22/issue /etc/issue
+sudo chown root /etc/issue && sudo chgrp root /etc/issue
 sudo chmod 644 /etc/issue
 
 sudo mv /home/ubuntu/cloud-init/ubuntu22/motd.final /etc/motd
