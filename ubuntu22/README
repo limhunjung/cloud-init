@@ -11,6 +11,10 @@ sudo chmod 644 /etc/issue.net
 
 sudo mv /home/ubuntu/cloud-init/ubuntu22/issue /etc/issue
 sudo chown root /etc/issue && sudo chgrp root /etc/issue
+sudo chmod +x /etc/apt/repo.sh
+
+sudo mv /home/ubuntu/cloud-init/ubuntu22/repo.sh /etc/apt/repo.sh
+sudo chown root /etc/apt/repo.she && sudo chgrp root /etc/apt/repo.sh
 sudo chmod 644 /etc/issue
 
 sudo mv /home/ubuntu/cloud-init/ubuntu22/motd.final /etc/motd
