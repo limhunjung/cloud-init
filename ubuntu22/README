@@ -2,16 +2,11 @@
 
 sudo adduser kadap
 
-
 git clone https://github.com/limhunjung/cloud-init.git
 
 sudo mv /home/ubuntu/cloud-init/ubuntu22/issue.net.first /etc/issue.net
 sudo chown root /etc/issue.net && sudo chgrp root /etc/issue.net
 sudo chmod 644 /etc/issue.net
-
-sudo mv /home/ubuntu/cloud-init/ubuntu22/issue /etc/issue
-sudo chown root /etc/issue && sudo chgrp root /etc/issue
-sudo chmod +x /etc/apt/repo.sh
 
 sudo mv /home/ubuntu/cloud-init/ubuntu22/repo.sh /etc/apt/repo.sh
 sudo chown root /etc/apt/repo.she && sudo chgrp root /etc/apt/repo.sh
@@ -26,6 +21,7 @@ echo "Banner /etc/issue.net" | sudo tee -a /etc/ssh/sshd_config
 sudo sed -i 's/PasswordAuthentication no/PasswordAuthentication yes/' /etc/ssh/sshd_config
 
 sudo service ssh restart 
+
 
 
 # 2. telegraf 설정 
