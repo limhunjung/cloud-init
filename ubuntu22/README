@@ -82,7 +82,7 @@ sudo cloud-init clean
 
 echo "sudo cp /etc/issue /etc/issue.net" | sudo tee -a /home/kadap/.bashrc
 
-history -cw  
+history -cw && history
 
 sudo poweroff
 
