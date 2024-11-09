@@ -46,6 +46,8 @@ sudo apt install -y acpid cloud-init cloud-initramfs-growroot
 sudo sed -i 's/name: ubuntu/name: kadap/' /etc/cloud/cloud.cfg
 sudo sed -i 's/lock_passwd: True/lock_passwd: false/' /etc/cloud/cloud.cfg
 sudo sed -i 's/gecos: Ubuntu/gecos: KADaP default user/' /etc/cloud/cloud.cfg
+echo "ssh_pwauth: True " | sudo tee -a /etc/cloud/cloud.cfg
+
 
 sudo vi /etc/cloud/cloud.cfg
 """
