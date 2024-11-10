@@ -75,14 +75,17 @@ touch /home/kadap/.Xauthority
 sudo userdel ubuntu
 sudo rm -rf /home/ubuntu
 
-sudo rm /etc/netplan/50-cloud-init.yaml
-sudo cloud-init clean
+
 
 ### GPU, DCV등 추가 작업 하기 
 
 echo "sudo cp /etc/issue /etc/issue.net" | sudo tee -a /home/kadap/.bashrc
 
-history -cw && history
+sudo rm /etc/netplan/50-cloud-init.yaml
+sudo cloud-init clean
+
+history -cw
+history
 
 sudo poweroff
 
