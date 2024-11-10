@@ -65,7 +65,6 @@ timezone: Asia/Seoul
 
 sudo rm /etc/netplan/50-cloud-init.yaml
 sudo cloud-init clean
-sudo apt autoclean
 
 sudo reboot
 
@@ -82,6 +81,7 @@ sudo rm -rf /home/ubuntu
 echo "sudo cp /etc/issue /etc/issue.net" | sudo tee -a /home/kadap/.bashrc
 
 sudo rm /etc/netplan/50-cloud-init.yaml
+sudo apt autoclean
 sudo cloud-init clean
 
 history -cw
