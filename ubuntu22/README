@@ -77,6 +77,7 @@ sudo rm -rf /home/ubuntu
 
 
 ### GPU, DCV등 추가 작업 하기 
+- [GPU](https://github.com/limhunjung/cloud-init/blob/main/gpu)
 
 echo "sudo cp /etc/issue /etc/issue.net" | sudo tee -a /home/kadap/.bashrc
 
