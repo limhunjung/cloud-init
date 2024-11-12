@@ -6,9 +6,10 @@ sudo apt update && sudo apt install build-essential pkg-config libglvnd-dev -y
  
 
 2. nouveau 모듈 blacklist 처리
-sudo vi /etc/modprobe.d/blacklist-nouveau.conf  #없으면 생성
+cat <<EOF | sudo tee /etc/modprobe.d/blacklist-nouveau.conf
 blacklist nouveau
 options nouveau modeset=0
+EOF
 
 #ubuntu 22
 sudo vi /etc/modprobe.d/blacklist.conf
