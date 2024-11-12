@@ -4,6 +4,8 @@ sudo adduser kadap
 
 git clone https://github.com/limhunjung/cloud-init.git
 
+sudo apt update; sudo apt install acpid cloud-init cloud-initramfs-growroot jq -y
+
 sudo mv /home/ubuntu/cloud-init/ubuntu22/issue.net.first /etc/issue.net
 sudo chown root /etc/issue.net && sudo chgrp root /etc/issue.net
 sudo chmod 644 /etc/issue.net
@@ -25,9 +27,10 @@ sudo service ssh restart
 
 
 
+
 # 2. telegraf 설정 
 sudo tar zxvf /home/ubuntu/cloud-init/ubuntu22/telegraf.tgz -C /etc
-sudo apt update; sudo apt install jq -y
+
 
 sudo sed -i 's/20s/60s/' /etc/telegraf/template/template/telegraf.conf.template 
 sudo apt install /etc/telegraf/telegraf_1.7.2-1_amd64.deb
@@ -40,9 +43,6 @@ sudo systemctl status telegraf
 
 
 # 4. cloud.cfg
-
-sudo apt install -y acpid cloud-init cloud-initramfs-growroot
-
 sudo sed -i 's/name: ubuntu/name: kadap/' /etc/cloud/cloud.cfg
 sudo sed -i 's/lock_passwd: True/lock_passwd: false/' /etc/cloud/cloud.cfg
 sudo sed -i 's/gecos: Ubuntu/gecos: KADaP default user/' /etc/cloud/cloud.cfg
