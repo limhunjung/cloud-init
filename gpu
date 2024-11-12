@@ -28,7 +28,7 @@ wget https://storage.googleapis.com/nvidia-drivers-us-public/GRID/vGPU14.2/NVIDI
 
 chmod 744 NVIDIA-Linux-x86_64-510.85.02-grid.run
 sudo ./NVIDIA-Linux-x86_64-510.85.02-grid.run # ubuntu 20.04모두 변경없이 그대로 엔터
-sudo ./NVIDIA-Linux-x86_64-<version>.run --glvnd-egl-config-path=/usr/share/glvnd/egl_vendor.d/
+sudo ./NVIDIA-Linux-x86_64-510.85.02-grid.run --glvnd-egl-config-path=/usr/share/glvnd/egl_vendor.d/
 
  
  
