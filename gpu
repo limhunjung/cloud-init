@@ -1,0 +1,45 @@
+# ubuntu 20.04
+
+1. 드라이버 사전 패키지 설치
+# ubuntu
+sudo apt update && sudo apt install build-essential pkg-config libglvnd-dev -y
+ 
+
+2. nouveau 모듈 blacklist 처리
+sudo vi /etc/modprobe.d/blacklist-nouveau.conf  #없으면 생성
+blacklist nouveau
+options nouveau modeset=0
+
+#ubuntu 22
+sudo vi /etc/modprobe.d/blacklist.conf
+blacklist nouveau
+
+
+# ubuntu
+sudo update-initramfs -u
+ 
+# 재기동
+sudo reboot
+ 
+ 
+3. NVIDIA guest(vm용) 드라이버 설치
+wget https://storage.googleapis.com/nvidia-drivers-us-public/GRID/vGPU14.2/NVIDIA-Linux-x86_64-510.85.02-grid.run
+
+chmod 744 NVIDIA-Linux-x86_64-510.85.02-grid.run
+sudo ./NVIDIA-Linux-x86_64-510.85.02-grid.run # ubuntu 20.04모두 변경없이 그대로 엔터
+sudo ./NVIDIA-Linux-x86_64-<version>.run --glvnd-egl-config-path=/usr/share/glvnd/egl_vendor.d/
+
+ 
+ 
+# 토큰 업로드(기존에 받은 토큰이 있으면 재사용해도 무방)
+다운로드 받은 토큰을 vm안의 /etc/nvidia/ClientConfigToken 경로에 복사
+sudo mv *.tok /etc/nvidia/ClientConfigToken/
+
+ 
+# nvidia-gridd(vgpu 데몬 재시작)
+sudo systemctl restart nvidia-gridd
+ 
+# 라이센싱 정상 확인
+sudo systemctl status nvidia-gridd
+License Successfully Acquired
+License Successfully Renewed
