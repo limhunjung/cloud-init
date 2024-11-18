@@ -50,22 +50,7 @@ sudo dcv create-session --owner kadap kadap   #rc.local에 추가 (필수!!!)
 sudo tar -xvf sessionctl.tar -C /opt/
 
 
-"""
-sessionctl.tar파일을 /opt/폴더 아래에서 tar파일 압축을 해제하시면 될것같습니다.
-
-현재는 시간설정을 5분으로 설정하여서 cfg파일을 수정하시면 안됩니다.
-
-1시간 아래의 시간을 설정할때는 
-
-sessionctl.sh 파일의 
-
-#LIMITSEC=$(expr ${LIMITTIME} \* 60 \* 60)
-LIMITSEC=$(expr ${LIMITTIME} \* 300)
-
-이부분의 300으로 설정되어있는 부분을 수정하시면 됩니다. 현재 5분으로 설정되어있습니다.
-
-vi /etc/dcv/dcvsessioninit 파일을 수정합니다
 
 /opt/nice/isbc/sessionctl.sh &  를 추가해주시면됩니다.
-"""
+
 
