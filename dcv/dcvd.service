@@ -1,0 +1,12 @@
+[Unit]
+Description=KADaP DCV monitor
+
+[Service]
+User=kadap
+Group=kadap
+WorkingDirectory=/home/kadap
+ExecStart=/bin/bash /home/kadap/.dcv/monitor.sh
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
