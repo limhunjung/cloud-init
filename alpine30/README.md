@@ -48,7 +48,7 @@ echo "if [ -f /root/.ssh/first.msg ]; then rm -f /root/.ssh/first.msg; fi" | tee
 
 # telegraf
 tar zxvf /root/cloud-init/ubuntu22/telegraf.tgz -C /etc
-apk jq -y
+apk add jq
 
 vi /etc/telegraf/template/template/telegraf.conf.template  #interval = "60s" 로 조정
 
