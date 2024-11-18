@@ -5,7 +5,7 @@ Description=KADaP DCV monitor
 User=kadap
 Group=kadap
 WorkingDirectory=/home/kadap
-ExecStart=/bin/bash /home/kadap/.dcv/monitor.sh
+ExecStart=/bin/bash /home/kadap/.dcv/dcv-monitor.sh
 Restart=always
 
 [Install]
