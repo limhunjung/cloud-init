@@ -11,26 +11,43 @@ reboot  #필수
 
 #ubuntu 22.04
 
-scp katech@10.10.17.20:/home/katech/cloud-init/nice-dcv-2024.0-17979-ubuntu2004-x86_64.tgz ./
+tar zxvf nice-dcv-*ubun*.tgz && cd nice-dcv-*64
 
-tar zxvf nice-dcv-*ubun*.tgz
-cd nice-dcv-*64
-apt install -y ./nice-*amd64.ubuntu*.deb
-
-scp katech@10.10.17.20:/home/katech/cloud-init/dcv.conf /etc/dcv/dcv.conf
-
-usermod -aG video dcv
+sudo apt install -y ./nice-*amd64.ubuntu*.deb
 
 
+sudo vi /etc/dcv/dcv.conf
 
-# dcvgldiag  #Diagnostic Script
-#에러 무시 
- 
+#license-file = ""
+
+#For GPU
+sudo sed -i 's/#license-file = ""/license-file = "5053@10.10.16.14"/' /etc/dcv/dcv.conf
+sudo sed -i 's/#enable-gl-in-virtual-sessions = "default-on"/enable-gl-in-virtual-sessions = "default-on"  /' /etc/dcv/dcv.conf
+
+#For CPU
+sudo sed -i 's/#license-file = ""/license-file = "5053@10.10.16.14"/' /etc/dcv/dcv.conf
+sudo sed -i 's/#enable-gl-in-virtual-sessions = "default-on"/enable-gl-in-virtual-sessions = "default-off" /' /etc/dcv/dcv.conf
+
+sudo usermod -aG video dcv
+
+# dcvgldiag  #Diagnostic Script  #에러 무시 
 sudo systemctl isolate graphical.target   #GUI
-sudo systemctl isolate multi-user.target  #CLI 
-sudo systemctl get-default  #확인 
-sudo systemctl set-default multi-user.target #고정, GPU없고, GUI
 sudo systemctl set-default graphical.target #고정, GPU있고, GUI
+sudo systemctl get-default  #확인 
+
+
+sudo systemctl enable dcvserver
+sudo systemctl start dcvserver
+sudo systemctl status dcvserver
+
+sudo reboot
+
+sudo dcv create-session --owner kadap kadap   
+sudo dcv create-session --owner ubuntu ubuntu   
+ 
+ dcv list-sessions
+
+
 
 
 
