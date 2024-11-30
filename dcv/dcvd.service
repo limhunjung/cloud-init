@@ -1,5 +1,7 @@
 [Unit]
 Description=KADaP DCV monitor
+StartLimitIntervalSec=5 
+StartLimitBurst=10
 
 [Service]
 User=kadap
@@ -7,8 +9,6 @@ Group=kadap
 WorkingDirectory=/home/kadap
 ExecStart=/bin/bash /home/kadap/.dcv/dcv-monitor.sh
 Restart=always
-StartLimitIntervalSec=0 
-StartLimitBurst=5000
 
 [Install]
 WantedBy=multi-user.target
