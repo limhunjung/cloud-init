@@ -66,8 +66,11 @@ mkdir /home/kadap/.dcv
 mv ~/cloud-init/dcv/dcv-monitor.sh /home/kadap/.dcv/
 sudo mv ~/cloud-init/dcv/dcvd.service /etc/systemd/system/
 
+sudo systemctl enable dcvd
+sudo systemctl status dcvd
 
-sudo tar -xvf sessionctl.tar -C /opt/
+
+sudo tar -xvf ~/cloud-init/dcv/sessionctl.tar -C /opt/
 
 
 
