@@ -72,9 +72,21 @@ sudo systemctl status dcvd
 
 sudo tar -xvf ~/cloud-init/dcv/sessionctl.tar -C /opt/
 
-
+sudo vi /opt/nice/isbc/sessionctl.sh   #38번줄 
+"""
+#LIMITSEC=$(expr ${LIMITTIME} \* 60 \* 60) #60분
+LIMITSEC=$(expr ${LIMITTIME} \* 300)  #5분
+"""
 
 /opt/nice/isbc/sessionctl.sh &  를 추가해주시면됩니다.
 
 
-# 데스크탑 환경 만들기 
+
+"""
+
+
+sudo vi /etc/dcv/dcvsessioninit 
+
+"""
+/opt/nice/isbc/sessionctl.sh &  # 추가 
+"""
