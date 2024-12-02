@@ -4,10 +4,11 @@ StartLimitIntervalSec=5
 StartLimitBurst=10
 
 [Service]
+TYpe=ilde
 User=kadap
 Group=kadap
 WorkingDirectory=/home/kadap
-ExecStart=sudo /home/kadap/.dcv/dcv-monitor.sh && sudo /home/kadap/.dcv/dcv-monitor2.sh 
+ExecStart=sudo /home/kadap/.dcv/dcv-monitor.sh
 Restart=always
 
 [Install]
