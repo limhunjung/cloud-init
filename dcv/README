@@ -67,6 +67,7 @@ sudo dcv create-session --owner kadap kadap   #rc.local에 추가 (필수!!!)
 ```bash 
 mkdir /home/kadap/.dcv
 mv ~/cloud-init/dcv/dcv-monitor.sh /home/kadap/.dcv/
+chmod +x /home/kadap/.dcv/dcv-monitor.sh
 sudo mv ~/cloud-init/dcv/dcvd.service /etc/systemd/system/
 
 sudo systemctl enable dcvd
