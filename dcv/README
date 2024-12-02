@@ -24,9 +24,12 @@ sudo vi /etc/dcv/dcv.conf
 sudo sed -i 's/#license-file = ""/license-file = "5053@10.10.16.14"/' /etc/dcv/dcv.conf
 sudo sed -i 's/#enable-gl-in-virtual-sessions = "default-on"/enable-gl-in-virtual-sessions = "default-on"  /' /etc/dcv/dcv.conf
 
+
 #For CPU
 sudo sed -i 's/#license-file = ""/license-file = "5053@10.10.16.14"/' /etc/dcv/dcv.conf
 sudo sed -i 's/#enable-gl-in-virtual-sessions = "default-on"/enable-gl-in-virtual-sessions = "default-off" /' /etc/dcv/dcv.conf
+
+
 
 sudo usermod -aG video dcv
 
