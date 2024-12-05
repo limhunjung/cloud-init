@@ -68,6 +68,17 @@ write_files:
                      pypi.org
       extra-index-url= http://pypi.org/simple
 
+## ubuntu 20.04
+
+apt:
+  primary:
+    - arches: [default]
+      uri: http://repo.bigdata-car.kr/repository/ubuntu/
+  secondary:
+    - arches: [default]
+      uri: http://archive.ubuntu.com/ubuntu/
+
+
 timezone: Asia/Seoul
 
 
