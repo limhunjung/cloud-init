@@ -25,7 +25,10 @@ sudo sed -i 's/#PasswordAuthentication yes/PasswordAuthentication yes/' /etc/ssh
 
 sudo service ssh restart 
 
-
+echo "apt_preserve_sources_list: true" | sudo tee -a /etc/cloud/cloud.cfg
+sudo cp /etc/apt/sources.list /etc/apt/sources.list.d
+sudo sed -i "s|security.ubuntu.com|repo.bigdata-car.kr/repository|g" /etc/apt/sources.list
+sudo sed -i "s|nova.clouds.archive.ubuntu.com|repo.bigdata-car.kr/repository|g" /etc/apt/sources.list
 
 
 # 2. telegraf 설정 
@@ -54,10 +57,14 @@ sudo vi /etc/cloud/cloud.cfg
 bootcmd:
  - nohup /etc/telegraf/template/reset_metric_agent_conf.sh > /dev/null 2>&1 &
  
-apt:
-  primary:
-    - arches: [default]
-      uri: http://mirror.kakao.com/ubuntu/
+write_files:
+  - path: /etc/pip.conf
+    content: |
+      [global]
+      index-url=http://repo.bigdata-car.kr/repository/pypi/simple
+      trusted-host = repo.bigdata-car.kr
+                     pypi.org
+      extra-index-url= http://pypi.org/simple
 
 timezone: Asia/Seoul
 
