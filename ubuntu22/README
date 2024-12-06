@@ -11,15 +11,15 @@ sudo sed -i "s|nova.clouds.archive.ubuntu.com|repo.bigdata-car.kr/repository|g" 
 
 sudo apt update; sudo apt install acpid cloud-init cloud-initramfs-growroot jq -y
 
-sudo mv /home/ubuntu/cloud-init/ubuntu22/issue.net.first /etc/issue.net
+sudo mv ~/cloud-init/ubuntu22/issue.net.first /etc/issue.net
 sudo chown root /etc/issue.net && sudo chgrp root /etc/issue.net
 sudo chmod 644 /etc/issue.net
 
-sudo mv /home/ubuntu/cloud-init/ubuntu22/issue /etc/issue
+sudo mv ~/cloud-init/ubuntu22/issue /etc/issue
 sudo chown root /etc/issue && sudo chgrp root /etc/issue
 sudo chmod 644 /etc/issue
 
-sudo mv /home/ubuntu/cloud-init/ubuntu22/motd.final /etc/motd
+sudo mv ~/cloud-init/ubuntu22/motd.final /etc/motd
 sudo chown root /etc/motd && sudo chgrp root /etc/motd
 sudo chmod 644 /etc/motd
 sudo rm -f /etc/update-motd.d/10* /etc/update-motd.d/8* /etc/update-motd.d/9* /etc/update-motd.d/50-motd-news
