@@ -9,6 +9,18 @@ sudo cp /etc/apt/sources.list /etc/apt/sources.list.d
 sudo sed -i "s|security.ubuntu.com|repo.bigdata-car.kr/repository|g" /etc/apt/sources.list
 sudo sed -i "s|nova.clouds.archive.ubuntu.com|repo.bigdata-car.kr/repository|g" /etc/apt/sources.list
 
+sudo vi /etc/pip.conf
+"""
+[global]
+index-url=http://repo.bigdata-car.kr/repository/pypi/simple
+trusted-host = repo.bigdata-car.kr
+               pypi.org
+extra-index-url= http://pypi.org/simple
+"""
+
+
+
+
 sudo apt update; sudo apt install acpid cloud-init cloud-initramfs-growroot jq -y
 
 sudo mv ~/cloud-init/ubuntu22/issue.net.first /etc/issue.net
@@ -58,15 +70,6 @@ sudo vi /etc/cloud/cloud.cfg
 """
 bootcmd:
  - nohup /etc/telegraf/template/reset_metric_agent_conf.sh > /dev/null 2>&1 &
- 
-write_files:
-  - path: /etc/pip.conf
-    content: |
-      [global]
-      index-url=http://repo.bigdata-car.kr/repository/pypi/simple
-      trusted-host = repo.bigdata-car.kr
-                     pypi.org
-      extra-index-url= http://pypi.org/simple
 
 ## ubuntu 20.04
 
