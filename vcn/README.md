@@ -1,4 +1,4 @@
-
+```bash
 #https://github.com/kasmtech/KasmVNC
 #https://kasmweb.com/kasmvnc/docs/latest/index.html
 
@@ -17,7 +17,7 @@ sudo mv ~/cloud-init/vncserver.service /etc/systemd/system/
 sudo systemctl enable vncserver.service
 sudo systemctl status vncserver.service
 
-
+```
 
 
 ---
