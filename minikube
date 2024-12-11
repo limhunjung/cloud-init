@@ -3,13 +3,15 @@
 curl -fsSL get.docker.com -o get-docker.sh
 
 curl -LO https://storage.googleapis.com/minikube/releases/latest/minikube_latest_amd64.deb
-sudo apt install ./minikube_latest_amd64.deb
+sudo dpkg -i minikube_latest_amd64.deb
 
 
-sudo apt-get install -y conntrack
 
+# sudo apt-get install -y conntrack
 
-sudo minikube start --vm-driver=none
+sudo usermod -aG docker $USER && newgrp docker
+
+minikube start --driver=docker
 
 sudo minikube status
 
@@ -17,3 +19,25 @@ sudo minikube status
 curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
 chmod +x ./kubectl
 sudo mv ./kubectl /usr/local/bin/kubectl
+
+
+
+sudo vi /etc/systemd/system/minikube.service
+"""
+[Unit]
+Description=Minikube
+Documentation=https://minikube.sigs.k8s.io/docs/
+After=network.target
+
+[Service]
+ExecStart=/usr/local/bin/minikube start --driver=docker
+ExecStop=/usr/local/bin/minikube stop
+Restart=always
+User=<your-username>
+
+[Install]
+WantedBy=multi-user.target
+"""
+
+sudo systemctl enable minikube
+sudo systemctl start minikube
