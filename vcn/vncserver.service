@@ -1,0 +1,13 @@
+[Unit]
+Description=Start VNC Server at startup
+After=syslog.target network.target
+
+[Service]
+Type=forking
+User=kadap
+ExecStart=/usr/bin/vncserver :1
+ExecStop=/usr/bin/vncserver -kill :1
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target
