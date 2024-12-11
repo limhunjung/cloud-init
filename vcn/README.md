@@ -12,7 +12,7 @@ vncserver
 
 10.10.17.20  kadap/kadap1234
 
-sudo mv ~/cloud-init/vncserver.service /etc/systemd/system/
+sudo mv ~/cloud-init/vcn/vncserver.service /etc/systemd/system/
 
 sudo systemctl enable vncserver.service
 sudo systemctl status vncserver.service
