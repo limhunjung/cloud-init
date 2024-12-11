@@ -1,4 +1,4 @@
-```bash
+
 #https://github.com/kasmtech/KasmVNC
 #https://kasmweb.com/kasmvnc/docs/latest/index.html
 
@@ -41,7 +41,8 @@ vncserver -kill :2
 
 #     pem_certificate: /etc/ssl/certs/ssl-cert-snakeoil.pem
 #     pem_key: /etc/ssl/private/ssl-cert-snakeoil.key
-```
+
+
 로그 파일 
 tail -f ~/.vnc/*.log
 
