@@ -28,12 +28,15 @@ sudo vi /etc/systemd/system/minikube.service
 Description=Minikube
 Documentation=https://minikube.sigs.k8s.io/docs/
 After=network.target
+StartLimitIntervalSec=5 
+StartLimitBurst=10
+
 
 [Service]
 ExecStart=/usr/local/bin/minikube start --driver=docker
 ExecStop=/usr/local/bin/minikube stop
 Restart=always
-User=<your-username>
+User=kadap
 
 [Install]
 WantedBy=multi-user.target
