@@ -12,6 +12,16 @@ vncserver
 
 10.10.17.20  kadap/kadap1234
 
+sudo mv ~/cloud-init/vncserver.service /etc/systemd/system/
+
+sudo systemctl enable vncserver.service
+sudo systemctl status vncserver.service
+
+
+
+
+---
+
 # Get a list of current sessions with display IDs
 vncserver -list
 
